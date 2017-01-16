@@ -10,5 +10,9 @@
 ==============
 * Github：[AutoLayoutKit](https://github.com/ReactiveCocoa/ReactiveCocoa)</br>
 # 演示
-=========
-<img src = "https://github.com/netyouli/WHC_Debuger/blob/master/WHC_Debuger.gif">
+==============
+<img src = "https://github.com/81516741/RAC_Demo/blob/master/Untitled.gif">
+要求
+==============
+* iOS 6.0 or later
+* Xcode 8.0 or later
