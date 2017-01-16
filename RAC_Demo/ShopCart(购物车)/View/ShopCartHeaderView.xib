@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ShopCartHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="35"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EqW-tQ-89o" userLabel="backgroundView">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mr-Ny-hz4">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="46" id="2cn-gx-laj"/>
+                            </constraints>
+                            <state key="normal" title="编辑">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" title="完成"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="6mr-Ny-hz4" secondAttribute="trailing" id="8vo-ud-K7e"/>
+                        <constraint firstAttribute="bottom" secondItem="6mr-Ny-hz4" secondAttribute="bottom" id="Lvr-4Y-Mtw"/>
+                        <constraint firstItem="6mr-Ny-hz4" firstAttribute="top" secondItem="EqW-tQ-89o" secondAttribute="top" id="fU9-uH-WiE"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hu-pK-Uve">
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="4hu-pK-Uve" secondAttribute="height" multiplier="1:1" id="KZI-q2-AcR"/>
+                    </constraints>
+                    <state key="normal" image="check_box_nor"/>
+                    <state key="selected" image="check_box_sel"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="BwA-oO-tWO">
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="BwA-oO-tWO" secondAttribute="height" multiplier="1:1" id="Afz-74-wEt"/>
+                        <constraint firstAttribute="width" constant="15" id="o8k-gR-lHp"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="纯正农场旗舰店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YV3-x6-9gz">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="e0z-PZ-54J">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="12" id="e0V-9L-D8a"/>
+                        <constraint firstAttribute="height" constant="10" id="nUz-zh-efS"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pn2-zN-1zC"/>
+            </subviews>
+            <constraints>
+                <constraint firstItem="YV3-x6-9gz" firstAttribute="leading" secondItem="BwA-oO-tWO" secondAttribute="trailing" constant="8" id="1F7-WW-GW1"/>
+                <constraint firstItem="e0z-PZ-54J" firstAttribute="leading" secondItem="YV3-x6-9gz" secondAttribute="trailing" constant="6" id="5R0-aO-1LE"/>
+                <constraint firstAttribute="trailing" secondItem="EqW-tQ-89o" secondAttribute="trailing" id="5an-xY-AFs"/>
+                <constraint firstItem="BwA-oO-tWO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FJN-gj-MLo"/>
+                <constraint firstItem="YV3-x6-9gz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="H3D-3C-KkB"/>
+                <constraint firstItem="4hu-pK-Uve" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="JyW-Sw-4g5"/>
+                <constraint firstAttribute="trailing" secondItem="pn2-zN-1zC" secondAttribute="trailing" constant="70" id="OHW-Q6-WsV"/>
+                <constraint firstAttribute="bottom" secondItem="4hu-pK-Uve" secondAttribute="bottom" id="Va2-3O-d8Q"/>
+                <constraint firstItem="4hu-pK-Uve" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WwT-5o-6rW"/>
+                <constraint firstItem="e0z-PZ-54J" firstAttribute="centerY" secondItem="YV3-x6-9gz" secondAttribute="centerY" id="b5L-WD-JqI"/>
+                <constraint firstItem="BwA-oO-tWO" firstAttribute="leading" secondItem="4hu-pK-Uve" secondAttribute="trailing" constant="2" id="dct-r6-Jji"/>
+                <constraint firstItem="EqW-tQ-89o" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dic-oG-EBZ"/>
+                <constraint firstItem="EqW-tQ-89o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="inK-KK-W9d"/>
+                <constraint firstItem="pn2-zN-1zC" firstAttribute="leading" secondItem="4hu-pK-Uve" secondAttribute="trailing" constant="5" id="kdu-1a-19s"/>
+                <constraint firstAttribute="bottom" secondItem="EqW-tQ-89o" secondAttribute="bottom" id="oXd-tw-jZt"/>
+                <constraint firstItem="pn2-zN-1zC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="s2m-TY-fTC"/>
+                <constraint firstAttribute="bottom" secondItem="pn2-zN-1zC" secondAttribute="bottom" id="yJu-Gm-Y1O"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="checkBtn" destination="4hu-pK-Uve" id="xbA-89-ZMh"/>
+                <outlet property="editBtn" destination="6mr-Ny-hz4" id="Zrf-Ck-Oy7"/>
+                <outlet property="jumpToShopBtn" destination="pn2-zN-1zC" id="hsE-5c-4ua"/>
+            </connections>
+            <point key="canvasLocation" x="157" y="-69.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow" width="30" height="30"/>
+        <image name="check_box_nor" width="19" height="20"/>
+        <image name="check_box_sel" width="21" height="20"/>
+        <image name="icon" width="126" height="126"/>
+    </resources>
+</document>

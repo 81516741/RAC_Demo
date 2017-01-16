@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShopCartViewController">
+            <connections>
+                <outlet property="bottomBar" destination="MuY-aH-61N" id="1Sy-hn-OHx"/>
+                <outlet property="tableView" destination="dwv-SZ-XWe" id="5Bb-Ef-oqf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dwv-SZ-XWe">
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuY-aH-61N" customClass="ShopCartBottomBar">
+                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="dwv-SZ-XWe" secondAttribute="trailing" id="GTq-FI-nfC"/>
+                <constraint firstAttribute="bottom" secondItem="dwv-SZ-XWe" secondAttribute="bottom" constant="44" id="Inl-DT-k4I"/>
+                <constraint firstItem="dwv-SZ-XWe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Iu9-nh-rPy"/>
+                <constraint firstAttribute="trailing" secondItem="MuY-aH-61N" secondAttribute="trailing" id="Oay-V6-DX7"/>
+                <constraint firstItem="MuY-aH-61N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jgR-7s-NFK"/>
+                <constraint firstItem="dwv-SZ-XWe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lTf-Jm-NBc"/>
+                <constraint firstItem="MuY-aH-61N" firstAttribute="top" secondItem="dwv-SZ-XWe" secondAttribute="bottom" id="vfC-qm-MaU"/>
+                <constraint firstAttribute="bottom" secondItem="MuY-aH-61N" secondAttribute="bottom" id="xVH-Hy-alH"/>
+            </constraints>
+            <point key="canvasLocation" x="65" y="61"/>
+        </view>
+    </objects>
+</document>
