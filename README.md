@@ -1,3 +1,3 @@
-# RAC_ShopCart_Demo
-基于RAC购物车Demo MVVM
+# ZLD 购物车Demo
+这是一款使用MVVM框架并结合RAC的一款仿淘宝购物车Demo，可以直接拖到自己的项目中使用
 ## 很完美的逻辑
