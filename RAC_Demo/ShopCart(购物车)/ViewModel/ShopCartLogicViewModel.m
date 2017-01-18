@@ -7,8 +7,8 @@
 //
 
 #import "ShopCartLogicViewModel.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #define kUpdateUI [[NSNotificationCenter defaultCenter]postNotificationName:kShopCartLogicViewModelUpdateUI object:nil userInfo:nil];
+
 @implementation ShopCartLogicViewModel
 +(instancetype)logicViewModel:(UITableView *)tableView tableViewDelegate:(id)tableViewDelegate inVC:(UIViewController *)viewController
 {
@@ -23,19 +23,6 @@
     return logicViewModel;
 }
 
--(void)setNavRightButton:(UIButton *)navRightButton
-{
-    _navRightButton = navRightButton;
-    __weak typeof(self) selfWeak = self;
-    [[navRightButton rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton * x) {
-        x.selected = !x.selected;
-        selfWeak.shopCartModel.allEdit = x.selected;
-        if (selfWeak.shopCartModel.allEdit) {
-            [selfWeak.shopCartModel.sectionModels setValue:@(NO) forKey:@"sectionEdit"];
-        }
-        [selfWeak.tableView reloadData];
-    }];
-}
 
 -(void)registerReuseHeaderView:(NSString *)viewName fromNib:(BOOL)fromNib
 {
@@ -134,12 +121,10 @@
         /*
          * 除了点击会调用这个kvo，还有2处会调用：
          * 1.全选   2.删除后的校验
-         *
-         *
          */
         [RACObserve(sectionModel, selected) subscribeNext:^(id x) {
             if ([x boolValue]) {
-                //全选的时候会吧sectionModel的selected全部变为YES
+                //全选的时候会把sectionModel的selected全部变为YES
                 if (selfWeak.shopCartModel.sectionSelectedCount != selfWeak.shopCartModel.sectionModels.count) {
                     selfWeak.shopCartModel.sectionSelectedCount += 1;
                 }
@@ -162,6 +147,7 @@
 {
     return [self.shopCartModel.sectionModels[indexPath.section] sectionEdit];
 }
+
 #pragma mark - 逻辑处理
 -(void)cellSelectedClick:(NSIndexPath *)indexPath
 {
@@ -169,7 +155,7 @@
     ShopCartCellModel * model = sectionModel.cellModels[indexPath.row];
     model.selected = !model.selected;
     //刷新界面
-    [self updateCellUI:indexPath];
+    [self updateSectionUI:indexPath.section];
 
     sectionModel.selectedCount += (model.selected ? 1 : (-1));
     if (sectionModel.selectedCount == sectionModel.cellModels.count) {
@@ -225,6 +211,10 @@
 -(void)deleteSelectedCell
 {
     __weak typeof(self) selfWeak = self;
+    if (_shopCartModel.totalQuantity < 1) {
+        NSLog(@"您还没有选择宝贝提示语");
+        return;
+    }
     [self alert:[NSString stringWithFormat:@"确认将这%ld宝贝删除？",_shopCartModel.totalQuantity] handle:^{
         [selfWeak removeAllSelectedCell];
     }];
@@ -283,7 +273,17 @@
 {
     ShopCartSectionModel * sectionModel = self.shopCartModel.sectionModels[section];
     sectionModel.sectionEdit = !sectionModel.sectionEdit;
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
+    [self updateSectionUI:section];
+}
+
+-(void)allEditBtnClick:(UIButton *)btn
+{
+    btn.selected = !btn.selected;
+    self.shopCartModel.allEdit = btn.selected;
+    if (self.shopCartModel.allEdit) {
+        [self.shopCartModel.sectionModels setValue:@(NO) forKey:@"sectionEdit"];
+    }
+    [self updateTableViewUI];
 }
 
 -(void)cellAddBtnClick:(NSIndexPath *)indexPath
@@ -292,6 +292,7 @@
     cellModel.quantity += 1;
     if (cellModel.quantity > cellModel.maxQuantity) {
         cellModel.quantity = cellModel.maxQuantity;
+        NSLog(@"商品数量大于库存的提示语");
     }
     [self updateCellUI:indexPath];
 }
@@ -302,6 +303,7 @@
     cellModel.quantity -= 1;
     if (cellModel.quantity < 1) {
         cellModel.quantity = 1;
+        NSLog(@"商品数量小于1的提示语");
     }
     [self updateCellUI:indexPath];
 }
@@ -312,9 +314,11 @@
     cellModel.quantity = value;
     if (value < 1) {
         cellModel.quantity = 1;
+        NSLog(@"商品数量小于1的提示语");
     }
     if (value > cellModel.maxQuantity) {
         cellModel.quantity = cellModel.maxQuantity;
+        NSLog(@"商品数量大于库存的提示语");
     }
     [self updateCellUI:indexPath];
 }

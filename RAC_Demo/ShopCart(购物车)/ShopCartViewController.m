@@ -11,7 +11,6 @@
 #import "ShopCartUIViewModel.h"
 #import "ShopCartLogicViewModel.h"
 #import "ShopCartLogicViewModel+SpecialView.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface ShopCartViewController ()
 @property (weak, nonatomic) IBOutlet ShopCartBottomBar *bottomBar;
@@ -34,24 +33,8 @@
     _logicViewModel = [ShopCartLogicViewModel logicViewModel:_tableView tableViewDelegate:_UIViewModel inVC:self];
     _UIViewModel.logicViewModel = _logicViewModel;
     _logicViewModel.bottomBar = _bottomBar;
-    [self creatRightBtn];
 }
 
--(void)creatRightBtn
-{
-    UIButton * rightBtn = [[UIButton alloc]init];
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    rightBtn.frame = CGRectMake(12, 0, 44, 44);
-    [rightBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [rightBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
-    [rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
-    [rightBtn setTitle:@"完成" forState:UIControlStateSelected];
-    UIView * wrapView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [wrapView addSubview:rightBtn];
-    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc]initWithCustomView:wrapView];
-    self.navigationItem.rightBarButtonItem = rightItem;
-    self.logicViewModel.navRightButton = rightBtn;
-}
 
 -(void)registerViewAndShow
 {

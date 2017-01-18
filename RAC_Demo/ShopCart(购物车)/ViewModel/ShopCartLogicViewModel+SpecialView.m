@@ -10,7 +10,6 @@
 #import "ShopCartBottomBar.h"
 #import "ShopCartModel.h"
 #import <objc/runtime.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
 @implementation ShopCartLogicViewModel (SpecialView)
 
 -(ShopCartBottomBar *)bottomBar

@@ -12,6 +12,7 @@
 #import "ShopCartModel.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 @implementation ShopCartUIViewModel
+#pragma mark - delegate
 #pragma mark cell
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -24,9 +25,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ShopCartSectionModel * sectionModel = self.logicViewModel.shopCartModel.sectionModels[indexPath.section];
-    ShopCartCellModel * cellModel = sectionModel.cellModels[indexPath.row];
-    return cellModel.cellHeight;
+    return [self.logicViewModel cellModel:indexPath].cellHeight;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -44,12 +43,13 @@
     [[[cell.deleteBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(id x) {
         [selfWeak.logicViewModel deleteCellByClick:indexPath];
     }];
-    [[cell.cellGoodsCountTextField  rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(UITextField * x) {
-        [selfWeak.logicViewModel cellTextFieldEndEdit:indexPath value:[x.text integerValue]];
+    [cell.cellGoodsCountTextField controlEvent:UIControlEventEditingDidEnd handle:^(UITextField * textField) {
+        [selfWeak.logicViewModel cellTextFieldEndEdit:indexPath value:[textField.text integerValue]];
     }];
     [cell updateCell:[_logicViewModel cellModel:indexPath] sectionEdit:[_logicViewModel sectionEdit:indexPath] allEdit:_logicViewModel.shopCartModel.allEdit];
     return cell;
 }
+
 #pragma mark header
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -90,8 +90,49 @@
     }
 }
 
+#pragma mark - 创建UI
+-(void)setLogicViewModel:(ShopCartLogicViewModel *)logicViewModel
+{
+    _logicViewModel = logicViewModel;
+    [self creatNaviBarItem];
+}
+
+-(void)creatNaviBarItem
+{
+    UIButton * rightBtn = [[UIButton alloc]init];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    rightBtn.frame = CGRectMake(12, 0, 44, 44);
+    [rightBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
+    [rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    [rightBtn setTitle:@"完成" forState:UIControlStateSelected];
+    UIView * wrapView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [wrapView addSubview:rightBtn];
+    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc]initWithCustomView:wrapView];
+    self.logicViewModel.viewController.navigationItem.rightBarButtonItem = rightItem;
+    __weak typeof(self) selfWeak = self;
+    [[rightBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton * x) {
+        [selfWeak.logicViewModel allEditBtnClick:x];
+    }];
+}
 -(void)dealloc
 {
     NSLog(@"%@----销毁了",NSStringFromClass([self class]));
+}
+@end
+
+#import <objc/runtime.h>
+@implementation UITextField (ShopCart)
+-(void)controlEvent:(UIControlEvents )event handle:(void (^)(UITextField *))handle
+{
+    objc_setAssociatedObject(self, @selector(textFiledTextEvent), handle, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self addTarget:self action:@selector(textFiledTextEvent) forControlEvents:event];
+}
+-(void)textFiledTextEvent
+{
+   void(^handle)(UITextField *) = objc_getAssociatedObject(self, _cmd);
+    if (handle) {
+        handle(self);
+    }
 }
 @end

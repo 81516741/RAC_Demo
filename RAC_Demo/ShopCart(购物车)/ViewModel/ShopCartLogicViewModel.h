@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #define kShopCartLogicViewModelUpdateUI @"kShopCartLogicViewModelUpdateUI"
 #import "ShopCartModel.h"
 @interface ShopCartLogicViewModel : NSObject
@@ -22,11 +23,14 @@
 -(ShopCartCellModel *)cellModel:(NSIndexPath *)indexPath;
 -(BOOL)sectionEdit:(NSIndexPath *)indexPath;
 -(void)getDatas;
+//刷新UI
+-(void)updateSectionUI:(NSInteger)section;
 
 //事件处理方法
 -(void)cellSelectedClick:(NSIndexPath *)indexPath;
 -(void)sectionSelectedClick:(NSInteger)section;
 -(void)sectionEditBtnClick:(NSInteger)section;
+-(void)allEditBtnClick:(UIButton *)btn;
 -(void)allSelectedClick:(UIButton *)btn;
 -(void)deleteCellByClick:(NSIndexPath *)indexPath;
 -(void)deleteSelectedCell;
@@ -43,6 +47,5 @@
 @property (nonatomic,copy,readonly) NSString * sectionHeaderReuseID;
 @property (nonatomic,copy,readonly) NSString * sectionFooterReuseID;
 @property (nonatomic,strong,readonly) ShopCartModel * shopCartModel;
-@property (nonatomic,weak) UIButton * navRightButton;
 @end
 
