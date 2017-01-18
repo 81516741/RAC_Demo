@@ -18,5 +18,7 @@ ZLD 购物车Demo
 * Xcode 8.0 or later
 
 #核心逻辑
-## 哈哈
+* 文件结构
+  该Demo整体使用的是MVVM结构，所以在文件夹分布采用了如下结构
+<img src = "https://github.com/81516741/RAC_Demo/blob/master/demo_show.gif">
 
