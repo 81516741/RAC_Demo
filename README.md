@@ -18,6 +18,7 @@ ZLD 购物车Demo
 * Xcode 8.0 or later
 
 #核心逻辑
-* 文件结构
-  该Demo整体使用的是MVVM结构，下图左为文件结构 右为UI控件名词介绍
-<img src = "https://github.com/81516741/RAC_Demo/blob/master/document_introduction.png"><img src = "https://github.com/81516741/RAC_Demo/blob/master/UI_introduction.png">
+* 文件结构该Demo整体使用的是MVVM结构，下图为文件结构
+<img src = "https://github.com/81516741/RAC_Demo/blob/master/document_introduction.png">
+* 下图为UI控件名词介绍，为方便后面思路讲解作参考
+<img src = "https://github.com/81516741/RAC_Demo/blob/master/UI_introduction.png">
