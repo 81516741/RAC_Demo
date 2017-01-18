@@ -8,7 +8,7 @@ ZLD 购物车Demo
 - **作者**: 曾令达
 
 #使用的第三方库
-* Github：[AutoLayoutKit](https://github.com/ReactiveCocoa/ReactiveCocoa)</br>
+* Github：[ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)</br>
 
 #演示
 <img src = "https://github.com/81516741/RAC_Demo/blob/master/demo_show.gif">
