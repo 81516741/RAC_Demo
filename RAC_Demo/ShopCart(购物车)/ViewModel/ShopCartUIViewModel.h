@@ -12,6 +12,3 @@
 @property (nonatomic,strong) ShopCartLogicViewModel * logicViewModel;
 @end
 
-@interface UITextField (ShopCart)
--(void)controlEvent:(UIControlEvents )event handle:(void(^)(UITextField *))handle;
-@end

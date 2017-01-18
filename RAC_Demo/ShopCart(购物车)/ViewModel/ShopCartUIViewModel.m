@@ -43,7 +43,7 @@
     [[[cell.deleteBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(id x) {
         [selfWeak.logicViewModel deleteCellByClick:indexPath];
     }];
-    [cell.cellGoodsCountTextField controlEvent:UIControlEventEditingDidEnd handle:^(UITextField * textField) {
+    [[[cell.cellGoodsCountTextField rac_signalForControlEvents:UIControlEventEditingDidEnd]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(UITextField * textField) {
         [selfWeak.logicViewModel cellTextFieldEndEdit:indexPath value:[textField.text integerValue]];
     }];
     [cell updateCell:[_logicViewModel cellModel:indexPath] sectionEdit:[_logicViewModel sectionEdit:indexPath] allEdit:_logicViewModel.shopCartModel.allEdit];
@@ -121,18 +121,3 @@
 }
 @end
 
-#import <objc/runtime.h>
-@implementation UITextField (ShopCart)
--(void)controlEvent:(UIControlEvents )event handle:(void (^)(UITextField *))handle
-{
-    objc_setAssociatedObject(self, @selector(textFiledTextEvent), handle, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self addTarget:self action:@selector(textFiledTextEvent) forControlEvents:event];
-}
--(void)textFiledTextEvent
-{
-   void(^handle)(UITextField *) = objc_getAssociatedObject(self, _cmd);
-    if (handle) {
-        handle(self);
-    }
-}
-@end
