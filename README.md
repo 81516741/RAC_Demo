@@ -19,6 +19,5 @@ ZLD 购物车Demo
 
 #核心逻辑
 * 文件结构
-  该Demo整体使用的是MVVM结构，所以在文件夹分布采用了如下结构
-<img src = "https://github.com/81516741/RAC_Demo/blob/master/demo_show.gif">
-
+  该Demo整体使用的是MVVM结构，下图左为文件结构 右为UI控件名词介绍
+<img src = "https://github.com/81516741/RAC_Demo/blob/master/document_introduction.png"><img src = "https://github.com/81516741/RAC_Demo/blob/master/UI_introduction.png">
