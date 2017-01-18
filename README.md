@@ -14,9 +14,16 @@ ZLD 购物车Demo
 
 演示
 ==============
-<img src = "https://github.com/81516741/RAC_Demo/blob/master/Untitled.gif">
+<img src = "https://github.com/81516741/RAC_Demo/blob/master/demo_show.gif">
 
 要求
 ==============
 * iOS 6.0 or later
 * Xcode 8.0 or later
+
+核心逻辑
+==============
+# 哈哈
+## 哈哈
+### 哈哈
+
