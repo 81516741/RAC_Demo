@@ -10,7 +10,7 @@
 #import "ShopCartCell.h"
 #import "ShopCartHeaderView.h"
 #import "ShopCartModel.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC.h>
 @implementation ShopCartUIViewModel
 #pragma mark - delegate
 #pragma mark cell

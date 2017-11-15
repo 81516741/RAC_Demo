@@ -1,3 +1,6 @@
-platform :ios,'8.0'
-use_frameworks!
-pod 'ReactiveCocoa', '~> 4.0.4-alpha-1'
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+target ‘RAC_Demo’ do
+pod 'ReactiveObjC', '3.0.0'
+end

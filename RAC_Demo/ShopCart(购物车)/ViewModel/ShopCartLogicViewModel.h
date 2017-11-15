@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC.h>
 #define kShopCartLogicViewModelUpdateUI @"kShopCartLogicViewModelUpdateUI"
 #import "ShopCartModel.h"
 @interface ShopCartLogicViewModel : NSObject
